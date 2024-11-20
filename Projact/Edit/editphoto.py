@@ -1,0 +1,1 @@
+pyinstaller --onefile -w --add-data "images/*;images"  -i "\Projact\\logo.ico"  --icon "\Projact\\logo.ico"--add-data "data/*;data" theProjact.py 
