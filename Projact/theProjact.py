@@ -4,7 +4,6 @@ from tkinter import messagebox
 from customtkinter import CTk, CTkImage, CTkLabel
 from tkinter import ttk
 import cv2
-import pyttsx3
 import os
 from datetime import datetime
 import sqlite3
@@ -255,34 +254,60 @@ def Red():
                 font=('Tajawal',14),width=250).place(x=90,y=210)
 
         style = ttk.Style()
-        style.theme_use("clam") 
-# Configure the Treeview style with a foreground color (fg)
-        style.configure("Italian.Treeview", font=('Time New Roman', 9, 'bold'), rowheight=50)
-        style.configure("Italian.Treeview.Heading",  background='#6da177',font=('Garamond', 13, 'bold'), anchor="w")
+        style.theme_use("clam")  # نقدر نخليها أو نبدلها بـ "alt", "default", الخ
 
-        tv = ttk.Treeview(fram1, columns=(1, 2, 3, 4, 5,6,7), style="Italian.Treeview")
+# خلفية عامة خفيفة وتكست واضح
+        style.configure("Custom.Treeview",
+                background="#f9f9f9",
+                foreground="#333333",
+                rowheight=45,
+                fieldbackground="#f9f9f9",
+                font=('Segoe UI', 10))
+
+# رأس الجدول – لون جذاب وغامق، مع خط أنيق
+        style.configure("Custom.Treeview.Heading",
+                background="#4a7a8c",
+                foreground="white",
+                font=('Segoe UI Semibold', 12),
+                relief="flat")
+
+# border & selected row
+        style.map("Custom.Treeview",
+          background=[("selected", "#c0e4ff")],
+          foreground=[("selected", "#000000")])
+
+# إنشاء Treeview باستعمال الستايل
+        tv = ttk.Treeview(fram1, columns=(1, 2, 3, 4, 5, 6, 7), style="Custom.Treeview")
+
         tv.heading("1", text="ID", anchor="w")
-        tv.column("1", width=40, anchor="w")
-        tv.heading("2", text="Date",anchor="w")
-        tv.column("2", width=65, anchor="w")
-        tv.heading("3", text="CIN",anchor="w")
-        tv.column("3", width=70, anchor="w")
-        tv.heading("4", text="Number",anchor="w" )
-        tv.column("4", width=80, anchor="w")
+        tv.column("1", width=50, anchor="w")
+
+        tv.heading("2", text="Date", anchor="w")
+        tv.column("2", width=80, anchor="w")
+        
+        tv.heading("3", text="CIN", anchor="w")
+        tv.column("3", width=90, anchor="w")
+        
+        tv.heading("4", text="Number", anchor="w")
+        tv.column("4", width=100, anchor="w")
+        
         tv.heading("5", text="Name", anchor="w")
-        tv.column("5", width=60, anchor="w")
+        tv.column("5", width=120, anchor="w")
+        
         tv.heading("6", text="Day", anchor="w")
-        tv.column("6", width=40, anchor="w")
+        tv.column("6", width=60, anchor="w")
+        
         tv.heading("7", text="Prix", anchor="w")
-        tv.column("7", width=50, anchor="w")
-        tv['show']='headings'
-        tv.bind("<ButtonRelease-1>",getData)
-        tv.tag_configure("colored", foreground="blue")
-        # Additional code to pack or grid `tv` into the root or parent widget
+        tv.column("7", width=70, anchor="w")
+        
+        tv['show'] = 'headings'
+        tv.tag_configure("colored", foreground="#1a73e8")
+        tv.bind("<ButtonRelease-1>", getData)
         tv.pack(fill="both", expand=True)
         
-
-
+                
+        
+        
 
         tr2=CTkTabview(fram,width=380,height=260,fg_color='#6da177',corner_radius=30)
         tr2.pack(padx=10,pady=12)
