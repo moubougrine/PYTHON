@@ -82,5 +82,4 @@ while not game_over:
 
     print(snake_body)
     pygame.display.update()
-    clock.tick(20)        
-
+    clock.tick(20)

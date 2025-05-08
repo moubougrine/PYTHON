@@ -12,20 +12,24 @@ root.attributes('-alpha',0.6)
 ###read Button ###
 def Read(enent=None):
     pas = entry1.get()
-
+ 
     if pas != 'Moughit201A':
         messagebox.showerror('Error',"Passwor False")
         entry1.delete(0, END)
         global error1
-        error1=Label(E1,text='Error Password !!',fg='red',bg='white',font=('Tajawal',10,'bold'))
+        error1 = Label(E1,text='Error Password !!',fg='red',bg='white',font=('Tajawal',10,'bold'))
         error1.place(x=105,y=105)
         s=cv2.VideoCapture(0)
         ret,image = s.read()
-        cv2.imwrite('loock.png',image)
+        cv2.imwrite('image.jpg',image)
+        
+        os.rename('image.jpg','jp.jpg')
+        os.replace('C:\PYTHON\jp.jpg','C:\PYTHON\employee\employee\jp.jpg')
+
         del(s)
     else:
-        os.startfile(r'C:\pythonprojacts\projact\projact1.pyw')
-        os.startfile(r'C:\pythonprojacts\projact\ReadQr.pyw')
+        os.startfile(r'c:\PYTHON\TKINTER\Insrtemploye_QR.pyw')
+        os.startfile(r'c:\PYTHON\TKINTER\ReadQr.pyw')
         entry1.delete(0, END)
         error1.place(x=500, y=55545)
 ###Clean Button##

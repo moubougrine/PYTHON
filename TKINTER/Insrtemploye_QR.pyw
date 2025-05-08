@@ -25,19 +25,6 @@ def welcome():
     test.say(say)
     test.runAndWait()
 
-
-
-def TakeComands():
-    command = sr.Recognizer()
-    with sr.Microphone() as mic:
-        command.phrase_threshold = 0.1
-        audio = command.listen(mic)
-        try:
-            query = command.recognize_google(audio, language='ar')
-        except EXCEPTION as error:
-            print(error)
-        return query.lower()
-
 def Sv():
     nmaefile = e_save.get()
     name = entry1.get()

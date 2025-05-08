@@ -40,20 +40,6 @@ class CSV:
         end_date= datetime.strptime(end_date,CSV.Format)
         mask = (df["date"]>=start_date) & (df["date"]<=end_date)
         filter_de = df.loc[mask]
-        """  if filter_de.empty:
-                print("No transactions found in the given date range ")
-            else :
-                print(f"Transaction from {start_date.strftime.CSV.Format} to {end_date.strftime(CSV.Format)}")
-                print(filter_de.to_string(index=False, formatters={"date" : lambda x: x.strftime(CSV.Format)}))
-                total_income = filter_de[filter_de["category" ]== "Income"].sum()
-                total_expense =  filter_de[filter_de["category" ]== "Expense"].sum()
-                print("\n Summary")
-                print(f"Total Income :${total_income:.2f}")
-                print(f"Total Expense :${total_expense:.2f}")
-                print(f"Net Savings :${total_income - total_expense:.2f}")
-
-            return filter_de
-            """
         if filter_de.empty:
             print("No transactions found in the given date range.")
         else:

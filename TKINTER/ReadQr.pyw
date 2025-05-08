@@ -29,7 +29,6 @@ def RAad():
     if not os.path.exists(d):
         messagebox.showerror("Error", "File not found!")
         return
-
     res = cv2.QRCodeDetector()
     image = cv2.imread(d)
     
@@ -41,6 +40,7 @@ def RAad():
     
     if val:
         messagebox.showinfo('Qr-Scan', val)
+        entry1.delete(0, END)
     else:
         messagebox.showerror('Qr-Scan', 'No QR code found or image is invalid.')
 
